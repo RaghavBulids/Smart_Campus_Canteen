@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Login - Smart Canteen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="student-login.css"/>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- Title -->
+    <div class="title-section">
+      <span class="emoji">🎒</span>
+      <h1>Student Login</h1>
+      <p>Enter your name to continue</p>
+    </div>
+
+    <!-- Login Box -->
+    <div class="login-box">
+
+      <!-- Error message -->
+      <div class="error-msg" id="errorMsg">⚠️ Please enter your name to continue.</div>
+
+      <!-- Username field -->
+      <div class="input-group">
+        <label>Your Name</label>
+        <input type="text" id="usernameInput" placeholder="e.g. Rahul, Priya..."/>
+      </div>
+
+      <!-- Login Button -->
+      <button class="login-btn" onclick="handleStudentLogin()">
+        Continue to Menu →
+      </button>
+
+    </div>
+
+    <!-- Back link -->
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+  </div>
+
+  <script src="student-login.js"></script>
+</body>
+</html>

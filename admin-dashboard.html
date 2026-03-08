@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Canteen – Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin-dashboard.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-logo">🍽️ Smart <span>Canteen</span></div>
+    <ul class="navbar-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../student-menu.html">Menu</a></li>
+      <li><a href="admin-dashboard.html" class="active">Admin</a></li>
+    </ul>
+    <button class="logout-btn" onclick="goToLogin()">← Logout</button>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">🛡️ Admin Dashboard</h1>
+        <p class="page-subtitle">Monitor orders, revenue, and canteen activity</p>
+      </div>
+      <div class="header-actions">
+        <button class="refresh-btn" onclick="loadDashboard()">🔄 Refresh</button>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📦</div>
+        <div class="stat-info">
+          <p class="stat-label">Total Orders</p>
+          <p class="stat-value" id="statTotalOrders">0</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💰</div>
+        <div class="stat-info">
+          <p class="stat-label">Total Revenue</p>
+          <p class="stat-value orange" id="statRevenue">₹0</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⏳</div>
+        <div class="stat-info">
+          <p class="stat-label">Pending</p>
+          <p class="stat-value yellow" id="statPending">0</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div class="stat-info">
+          <p class="stat-label">Completed</p>
+          <p class="stat-value green" id="statCompleted">0</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header">
+        <h2 class="section-title">📋 All Orders</h2>
+        <div class="controls-row">
+          <input type="text" id="orderSearch" class="search-input" placeholder="Search ID or Food..." oninput="filterOrders()">
+          <select class="filter-select" id="statusFilter" onchange="filterOrders()">
+            <option value="all">All Status</option>
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="empty-state" id="emptyState">
+        <p class="empty-icon">📭</p>
+        <p class="empty-text">No orders match your criteria.</p>
+      </div>
+
+      <div class="table-wrapper" id="tableWrapper" style="display:none;">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Time</th>
+              <th>Items</th>
+              <th>Subtotal</th>
+              <th>Discount</th>
+              <th>Total</th>
+              <th>Pickup</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header">
+        <h2 class="section-title">🔥 Most Ordered Items</h2>
+      </div>
+      <p class="empty-text" id="topItemsEmpty" style="padding:20px 0;">No data yet.</p>
+      <div id="topItemsList" class="top-items-container"></div>
+    </div>
+
+    <div class="section-card danger-zone">
+      <h2 class="section-title red">⚠️ Danger Zone</h2>
+      <p class="danger-desc">This will permanently delete all orders from storage.</p>
+      <button class="clear-btn" onclick="confirmClearOrders()">🗑️ Clear All Orders</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2026 Smart Canteen · Admin Panel
+  </div>
+
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-box">
+      <button class="close-btn" onclick="closeDetailModal()">✕</button>
+      <h2 class="modal-title">📦 Order Details</h2>
+      <div id="modalContent"></div>
+      <button class="modal-close-bottom" onclick="closeDetailModal()">Close</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="admin-dashboard.js"></script>
+</body>
+</html>

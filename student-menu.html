@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Canteen – Food Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="student-menu.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-logo">Smart <span>Canteen</span></div>
+
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="student-menu.html" class="active">Menu</a></li>
+      <li><a href="admin-dashboard.html">Admin</a></li>
+    </ul>
+
+    <div class="navbar-right">
+      <div class="user-greeting" id="userGreeting">
+        <div class="user-avatar" id="userAvatar">S</div>
+        <span id="userNameDisplay">Student</span>
+      </div>
+      <button class="cart-toggle-btn" onclick="toggleCartPanel()">
+        Cart
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-layout">
+
+    <div class="menu-section">
+      <h1 class="page-title">Food Menu</h1>
+      <p class="page-subtitle">Order fresh · Pick up fast · Zero waiting</p>
+
+      <div class="diet-tabs">
+        <button class="tab-btn tab-veg active-veg" id="vegTab" onclick="switchDiet('veg')">Veg</button>
+        <button class="tab-btn tab-nonveg" id="nonvegTab" onclick="switchDiet('nonveg')">Non-Veg</button>
+      </div>
+
+      <div id="menuContainer"></div>
+    </div>
+
+    <div class="cart-panel" id="cartPanel">
+
+      <h2 class="cart-title">Your Cart</h2>
+
+      <p class="cart-empty" id="cartEmptyMsg">No items added yet.</p>
+
+      <div id="cartItemsList"></div>
+
+      <div class="cart-totals" id="cartTotals" style="display:none;">
+        <div class="total-row">
+          <span>Subtotal</span>
+          <span id="subtotalDisplay">0</span>
+        </div>
+        <div class="total-row discount-row">
+          <span>Discount</span>
+          <span id="discountDisplay">- 0</span>
+        </div>
+        <div class="total-row total-final">
+          <span>Total</span>
+          <span id="totalDisplay">0</span>
+        </div>
+      </div>
+
+      <div class="coupon-section" id="couponSection" style="display:none;">
+        <p class="section-label">Coupon Code</p>
+        <div class="coupon-hints">
+          <span class="coupon-tag">WELCOME10</span>
+          <span class="coupon-tag">STUDENT20</span>
+          <span class="coupon-tag">FEAST15</span>
+          <span class="coupon-tag">LUNCH5</span>
+          <span class="coupon-tag">CAMPUS30</span>
+        </div>
+        <div class="coupon-row">
+          <input type="text" class="coupon-input" id="couponInput" placeholder="Enter coupon code" />
+          <button class="apply-btn" onclick="applyCoupon()">Apply</button>
+        </div>
+        <p class="coupon-msg" id="couponMsg"></p>
+      </div>
+
+      <div class="pickup-section" id="pickupSection" style="display:none;">
+        <p class="section-label">Pickup Time</p>
+        <p class="section-hint">Available: 8:00 AM – 10:00 PM</p>
+        <select class="time-select" id="pickupTimeSelect">
+          <option value="">-- Select a time --</option>
+        </select>
+        <p class="field-error" id="timeError"></p>
+      </div>
+
+      <div class="order-section" id="orderSection" style="display:none;">
+        <p class="section-label">Order Summary</p>
+        <div id="orderSummaryRows"></div>
+        <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+      </div>
+
+      <div class="success-box" id="successBox" style="display:none;">
+        <div class="success-icon">&#10003;</div>
+        <p class="success-text">Order placed successfully!</p>
+        <p class="success-sub">Head to the counter at your pickup time.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Smart Canteen &nbsp;&middot;&nbsp; Made with love for campus life
+  </div>
+
+  <button class="mobile-cart-fab" id="mobileCartFab" onclick="toggleCartPanel()">
+    Cart &nbsp;<span id="fabCount">0</span> items
+  </button>
+
+  <script src="student-menu.js"></script>
+</body>
+</html>
