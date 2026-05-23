@@ -194,7 +194,7 @@ function showToast(msg, isErr) {
 }
 
 function goToLogin() {
-  window.location.href = "../index.html";
+  window.location.href = "index.html";
 }
 
 document.getElementById("detailModal").addEventListener("click", function(e) {
