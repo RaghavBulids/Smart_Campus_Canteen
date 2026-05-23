@@ -1,3 +1,20 @@
+// Check if admin is logged in
+window.addEventListener("load", function() {
+  const isAdminLoggedIn = sessionStorage.getItem("adminLoggedIn");
+  
+  if (!isAdminLoggedIn) {
+    // Redirect to login if not authenticated
+    window.location.href = "admin-login.html";
+  }
+});
+
+// Update logout function to clear session
+function goToLogin() {
+  sessionStorage.removeItem("adminLoggedIn");
+  sessionStorage.removeItem("adminUsername");
+  window.location.href = "index.html";
+}
+
 const STORAGE_KEY = "canteenOrders";
 
 function loadDashboard() {
